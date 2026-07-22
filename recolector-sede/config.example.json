@@ -1,0 +1,12 @@
+{
+  "sede": "hotel-quinta-sede",
+  "endpoint": "https://TU-SERVIDOR-CENTRAL/api/estado",
+  "auth_token": "",
+  "verify_tls": true,
+  "interval_seconds": 30,
+  "ping_timeout_seconds": 1,
+  "machines": [
+    { "id": "EJEMPLO-MAQUINA-1", "ip": "192.168.50.101" },
+    { "id": "EJEMPLO-MAQUINA-2", "ip": "192.168.50.102" }
+  ]
+}

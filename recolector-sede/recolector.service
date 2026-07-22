@@ -1,0 +1,16 @@
+[Unit]
+Description=Recolector de estado de maquinas de la sede
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Ajusta el usuario y la ruta a donde hayas copiado la carpeta
+User=recolector
+WorkingDirectory=/opt/recolector-sede
+ExecStart=/opt/recolector-sede/venv/bin/python /opt/recolector-sede/collector.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
