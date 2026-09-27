@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Dosier Comercial - PokeCatch &amp; Win</title>
+<style>
+@font-face {
+  font-family: 'Poppins';
+  src: url('/usr/share/fonts/truetype/google-fonts/Poppins-Regular.ttf');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/usr/share/fonts/truetype/google-fonts/Poppins-Medium.ttf');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf');
+  font-weight: 700;
+}
+
+:root{
+  --pink:#ff2d95;
+  --purple:#7b2ff7;
+  --cyan:#00c2d1;
+  --yellow:#ffcc00;
+  --dark:#1a1030;
+  --gray:#5a5468;
+}
+
+* { box-sizing: border-box; }
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--dark);
+  margin: 0;
+  font-size: 10.5pt;
+  line-height: 1.5;
+}
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  position: relative;
+  page-break-after: always;
+  overflow: hidden;
+}
+.page:last-child { page-break-after: avoid; }
+
+/* ---------- COVER ---------- */
+.cover {
+  background: linear-gradient(160deg, var(--dark) 0%, #2a1550 55%, #3d1a5c 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20mm;
+}
+.cover .glow-a { position:absolute; width:220mm; height:220mm; border-radius:50%;
+  background: radial-gradient(circle, rgba(255,45,149,0.35) 0%, rgba(255,45,149,0) 65%);
+  top:-90mm; right:-90mm; }
+.cover .glow-b { position:absolute; width:200mm; height:200mm; border-radius:50%;
+  background: radial-gradient(circle, rgba(0,194,209,0.30) 0%, rgba(0,194,209,0) 65%);
+  bottom:-80mm; left:-80mm; }
+.cover img.logo { width:62mm; z-index:2; filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45)); }
+.cover h1 {
+  font-size: 30pt; font-weight:700; letter-spacing:1px; margin: 8mm 0 2mm 0; z-index:2;
+  color: var(--yellow);
+}
+.cover .slogan { font-size:15pt; font-weight:700; font-style:italic; color:var(--cyan); margin: 0 0 4mm 0; z-index:2; letter-spacing:0.5px; }
+.cover h2 { font-size:12.5pt; font-weight:400; color:#d9d2ef; margin:0 0 14mm 0; z-index:2; letter-spacing:0.5px;}
+.cover .brands { display:flex; gap:10mm; z-index:2; margin-bottom:16mm; }
+.cover .brand-chip {
+  border: 1.4pt solid rgba(255,255,255,0.35); border-radius: 3mm; padding: 5mm 8mm;
+  font-size: 11pt; font-weight:500; letter-spacing:0.5px;
+}
+.cover .brand-chip.a { color: var(--yellow); border-color: rgba(255,204,0,0.5); }
+.cover .brand-chip.b { color: var(--cyan); border-color: rgba(0,194,209,0.5); }
+.cover .foot { position:absolute; bottom:14mm; z-index:2; font-size:9pt; color:#b8b0d0; letter-spacing:0.5px;}
+.cover .foot strong{ color:white; }
+
+/* ---------- HEADER BAND (inner pages) ---------- */
+.band {
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+  color: white; padding: 10mm 16mm 7mm 16mm;
+}
+.band .eyebrow { font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; opacity:0.85; margin:0 0 1mm 0;}
+.band h1 { font-size:19pt; font-weight:700; margin:0; }
+.content { padding: 9mm 16mm 0 16mm; }
+
+.lead { font-size:10pt; color:var(--gray); margin: 0 0 4mm 0; }
+
+/* photo grid */
+.grid { display:flex; flex-wrap:wrap; gap:4mm; margin-bottom:4mm; }
+.card {
+  width: 55mm; border-radius:3mm; overflow:hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+  border: 1pt solid #eee;
+}
+.card img { width:100%; height:30mm; object-fit:cover; display:block; }
+.card .cap { padding:1.8mm 3mm; font-size:7.5pt; font-weight:500; color:var(--dark); background:white; line-height:1.25; }
+
+.grid.wide .card { width: 84mm; }
+.grid.wide .card img { height: 55mm; }
+
+/* section titles */
+h3.sec {
+  font-size: 12pt; color: var(--purple); font-weight:700; margin: 3mm 0 2.5mm 0;
+  border-left: 3.5pt solid var(--pink); padding-left: 3mm;
+}
+
+.pill-row { display:flex; gap:4mm; margin: 4mm 0 6mm 0; }
+.pill {
+  flex:1; background:#f7f4fc; border-radius:3mm; padding:5mm; text-align:center;
+  border: 1pt solid #ece5f7;
+}
+.pill .n { font-size:15pt; font-weight:700; color:var(--pink); display:block; }
+.pill .l { font-size:8pt; color:var(--gray); }
+
+table.cond { width:100%; border-collapse:collapse; margin: 2mm 0 4mm 0; font-size:9pt; }
+table.cond th { background: var(--dark); color:white; text-align:left; padding:2mm 4mm; font-weight:600; font-size:8pt; letter-spacing:0.3px;}
+table.cond td { padding:2mm 4mm; border-bottom:1pt solid #eee; vertical-align:top; }
+table.cond tr:nth-child(even) td { background:#faf8fd; }
+
+.note {
+  background:#fff8e6; border-left:3pt solid var(--yellow); padding:2.5mm 5mm; font-size:8.5pt;
+  color:#6b5a12; border-radius: 0 2mm 2mm 0; margin-bottom:4mm;
+}
+
+/* vending illustration */
+.vending-wrap { display:flex; gap:8mm; align-items:center; margin: 4mm 0 6mm 0; }
+.vending-box {
+  width: 42mm; height: 62mm; border-radius: 4mm; flex-shrink:0;
+  background: linear-gradient(180deg, #1c2a52, #24346a);
+  border: 2pt solid #14a7c9; position:relative; box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+.vending-box .screen {
+  position:absolute; top:5mm; left:4mm; right:4mm; height:34mm;
+  background: radial-gradient(circle at 35% 30%, #ffe8e8 0%, #ffcccc 40%, #cc1e1e 70%, #7a1111 100%);
+  border-radius:2mm; border:1.5pt solid #0d3a4a;
+}
+.vending-box .screen::after{
+  content:''; position:absolute; inset:22%; border-radius:50%; background:white;
+}
+.vending-box .slot { position:absolute; bottom:6mm; left:4mm; right:4mm; height:10mm; background:#0d1830; border-radius:1.5mm; }
+.vending-box .btn { position:absolute; bottom:9mm; right:7mm; width:4mm; height:4mm; border-radius:50%; background: var(--yellow); }
+
+.two-col { display:flex; gap:8mm; }
+.two-col .col { flex:1; }
+
+ul.chk { list-style:none; margin:0 0 6mm 0; padding:0; }
+ul.chk li { padding-left: 6mm; position:relative; margin-bottom:2.2mm; font-size:9.8pt; }
+ul.chk li::before { content:'✓'; position:absolute; left:0; color:var(--pink); font-weight:700; }
+
+.foot-page {
+  position:absolute; bottom:8mm; left:16mm; right:16mm; display:flex; justify-content:space-between;
+  font-size:7.5pt; color:#a89fc0; border-top: 0.5pt solid #eee; padding-top:2mm;
+}
+
+/* contact page */
+.contact-page { background: linear-gradient(160deg, var(--dark) 0%, #2a1550 100%); color:white; padding: 20mm 18mm; }
+.contact-page h1 { font-size: 22pt; margin:0 0 2mm 0; color: var(--yellow); }
+.contact-page .sub { color:#cfc4ea; font-size:10.5pt; margin-bottom:10mm; }
+.contact-grid { display:flex; gap:8mm; margin-bottom:10mm; }
+.contact-card { flex:1; background: rgba(255,255,255,0.06); border:1pt solid rgba(255,255,255,0.15);
+  border-radius:4mm; padding:7mm; }
+.contact-card h4 { margin:0 0 3mm 0; font-size:11pt; color: var(--yellow); }
+.contact-card p { margin:0 0 2mm 0; font-size:9.5pt; color:#e7e1f5; }
+.contact-list { list-style:none; padding:0; margin:0; }
+.contact-list li { margin-bottom:3.5mm; font-size:10pt; padding-left:8mm; position:relative; color:#f1eefa;}
+.contact-list li .ic { position:absolute; left:0; }
+.cta { text-align:center; margin-top: 6mm; }
+.cta .box { display:inline-block; padding: 6mm 14mm; border-radius: 3mm;
+  background: linear-gradient(90deg, var(--pink), var(--purple)); font-weight:700; font-size:12pt; }
+</style>
+</head>
+<body>
+
+<!-- ================= PORTADA ================= -->
+<div class="page cover">
+  <div class="glow-a"></div>
+  <div class="glow-b"></div>
+  <img class="logo" src="assets/logo-pokecatchwin.png">
+  <h1>DOSIER COMERCIAL</h1>
+  <p class="slogan">Somos Catch &amp; Win</p>
+  <h2>Máquinas recreativas de habilidad con premio<br>para hoteles, centros comerciales y espacios de ocio</h2>
+  <div class="brands">
+    <div class="brand-chip a">CATCH &amp; WIN</div>
+  </div>
+  <div class="foot"><strong>Manuel A. Vizcaíno</strong> · Director Comercial · Islas Canarias · 2026</div>
+</div>
+
+<!-- ================= QUIENES SOMOS ================= -->
+<div class="page">
+  <div class="band">
+    <p class="eyebrow">Quiénes somos</p>
+    <h1>Ocio, premios y coleccionismo en un mismo espacio</h1>
+  </div>
+  <div class="content">
+    <p class="lead">
+      Somos un grupo canario especializado en ocio recreativo con presencia en Fuerteventura, Gran Canaria y Cataluña.
+      A través de <strong>Catch &amp; Win</strong> llevamos máquinas de habilidad con premio a hoteles, centros comerciales
+      y espacios de alto tránsito, con instalación, mantenimiento y reposición incluidos: el espacio no asume inversión
+      ni gestión operativa.
+    </p>
+
+    <div class="pill-row">
+      <div class="pill"><span class="n">0€</span><span class="l">Inversión inicial<br>para el espacio</span></div>
+      <div class="pill"><span class="n">100%</span><span class="l">Instalación y<br>mantenimiento incluidos</span></div>
+      <div class="pill"><span class="n">+10</span><span class="l">Modelos de máquina<br>disponibles</span></div>
+    </div>
+
+    <h3 class="sec">Nuestras máquinas en distintos espacios</h3>
+    <div class="grid">
+      <div class="card"><img src="assets/fotos_proc/02-fancy-toysland-1.jpg"><div class="cap">Fancy Toysland · máquina de peluches</div></div>
+      <div class="card"><img src="assets/fotos_proc/08-boxing-prize.jpg"><div class="cap">Boxing Prize · habilidad con premio</div></div>
+      <div class="card"><img src="assets/fotos_proc/05-lucky-n-spin.jpg"><div class="cap">Lucky'n Spin · premios tecnológicos</div></div>
+      <div class="card"><img src="assets/fotos_proc/12-lucky-stars.jpg"><div class="cap">Lucky Stars · torre panorámica de peluches</div></div>
+      <div class="card"><img src="assets/fotos_proc/13-speed-hockey.jpg"><div class="cap">Speed Hockey · mesa multijugador</div></div>
+      <div class="card"><img src="assets/fotos_proc/14-fancytoysland-futbol.jpg"><div class="cap">Fancy Toysland Fútbol · premios de temporada</div></div>
+    </div>
+
+    <h3 class="sec">Por qué incorporar nuestras máquinas</h3>
+    <div class="two-col">
+      <div class="col">
+        <ul class="chk">
+          <li>Genera un ingreso adicional pasivo para el espacio</li>
+          <li>Refuerza la experiencia de ocio para familias y huéspedes</li>
+          <li>Premios de marca reconocida: tecnología, peluches, coleccionables</li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul class="chk">
+          <li>Sin personal ni gestión adicional para el local</li>
+          <li>Reposición y mantenimiento periódico a cargo nuestro</li>
+          <li>Diseño y premios adaptables al perfil de cada espacio</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot-page"><span>PokeCatch &amp; Win · Dosier Comercial</span><span>2</span></div>
+</div>
+
+<!-- ================= CATCH AND WIN ================= -->
+<div class="page">
+  <div class="band">
+    <p class="eyebrow">Catch &amp; Win</p>
+    <h1>Máquinas de habilidad con premio</h1>
+  </div>
+  <div class="content">
+    <p class="lead">
+      Catch &amp; Win despliega máquinas arcade de habilidad —grúas, básculas de bolas, ruedas de premio y retos de destreza—
+      en las que el usuario compite por premios físicos: desde tecnología (auriculares, consolas) hasta peluches con licencia
+      y artículos de coleccionismo. Cada máquina se selecciona según el perfil del espacio y su público.
+    </p>
+
+    <div class="grid">
+      <div class="card"><img src="assets/fotos_proc/01-ball-king.jpg"><div class="cap">Ball King · ruleta de bolas con premio</div></div>
+      <div class="card"><img src="assets/fotos_proc/04-pinkdate.jpg"><div class="cap">PinkDate · corta el hilo, gana el premio</div></div>
+      <div class="card"><img src="assets/fotos_proc/07-star-ferris-wheel.jpg"><div class="cap">Star Ferris Wheel · noria de premios</div></div>
+      <div class="card"><img src="assets/fotos_proc/09-lucky-7.jpg"><div class="cap">Lucky 7 · parada de precisión</div></div>
+      <div class="card"><img src="assets/fotos_proc/11-lucky-tower-crane.jpg"><div class="cap">Lucky Tower Crane · grúa panorámica</div></div>
+      <div class="card"><img src="assets/fotos_proc/06-fancy-toysland-2.jpg"><div class="cap">Fancy Toysland · surtido premium de peluches</div></div>
+    </div>
+
+    <h3 class="sec">Modelo de colaboración habitual</h3>
+    <table class="cond">
+      <tr><th style="width:38%">Concepto</th><th>Condición de referencia</th></tr>
+      <tr><td>Reparto de la recaudación</td><td>Se descuenta primero el coste de los premios repuestos (referencia: 35% de la recaudación) y el resto se reparte al 50% entre el espacio y Catch &amp; Win</td></tr>
+      <tr><td>Instalación y mantenimiento</td><td>Incluidos, a cargo de Catch &amp; Win</td></tr>
+      <tr><td>Selección de premios</td><td>Adaptada al perfil del público del espacio (familiar, turístico, tecnológico...)</td></tr>
+      <tr><td>Espacio necesario</td><td>Variable según modelo de máquina, a definir en visita técnica</td></tr>
+    </table>
+    <div class="note">Condiciones orientativas: el reparto final y el número de máquinas se ajustan a cada espacio y se formalizan en un acuerdo específico.</div>
+  </div>
+  <div class="foot-page"><span>PokeCatch &amp; Win · Dosier Comercial</span><span>3</span></div>
+</div>
+
+<!-- ================= CONTACTO ================= -->
+<div class="page contact-page">
+  <h1>Hablemos de tu espacio</h1>
+  <p class="sub">Visitamos el local, valoramos el espacio disponible y preparamos una propuesta de máquinas y condiciones a medida.</p>
+
+  <div class="contact-grid" style="justify-content:center;">
+    <div class="contact-card" style="flex:none; width:100mm;">
+      <h4>CATCH &amp; WIN</h4>
+      <p>www.catchandwin.com</p>
+      <p>info@catchandwin.com</p>
+      <p>@oficial.catchandwin</p>
+    </div>
+  </div>
+
+  <ul class="contact-list">
+    <li><span class="ic">☎</span> +34 628 87 42 74 · +34 664 019 650</li>
+    <li><span class="ic">✉</span> info@catchandwin.com</li>
+    <li><span class="ic">🌐</span> www.catchandwin.com</li>
+    <li><span class="ic">📍</span> Islas Canarias · Fuerteventura, Gran Canaria y Cataluña</li>
+    <li><span class="ic">💬</span> Hablamos Español e Inglés</li>
+  </ul>
+
+  <div class="cta"><div class="box">Manuel A. Vizcaíno — Director Comercial</div></div>
+</div>
+
+</body>
+</html>
