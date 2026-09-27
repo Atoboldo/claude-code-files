@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Dosier Comercial - Catch &amp; Win Pokémon</title>
+<style>
+@font-face {
+  font-family: 'Poppins';
+  src: url('/usr/share/fonts/truetype/google-fonts/Poppins-Regular.ttf');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/usr/share/fonts/truetype/google-fonts/Poppins-Medium.ttf');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf');
+  font-weight: 700;
+}
+
+:root{
+  --pink:#ff2d95;
+  --purple:#7b2ff7;
+  --cyan:#00c2d1;
+  --yellow:#ffcc00;
+  --dark:#1a1030;
+  --gray:#5a5468;
+}
+
+* { box-sizing: border-box; }
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--dark);
+  margin: 0;
+  font-size: 10.5pt;
+  line-height: 1.5;
+}
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  position: relative;
+  page-break-after: always;
+  overflow: hidden;
+}
+.page:last-child { page-break-after: avoid; }
+
+/* ---------- COVER ---------- */
+.cover {
+  background: linear-gradient(160deg, var(--dark) 0%, #2a1550 55%, #3d1a5c 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20mm;
+}
+.cover .glow-a { position:absolute; width:220mm; height:220mm; border-radius:50%;
+  background: radial-gradient(circle, rgba(255,45,149,0.35) 0%, rgba(255,45,149,0) 65%);
+  top:-90mm; right:-90mm; }
+.cover .glow-b { position:absolute; width:200mm; height:200mm; border-radius:50%;
+  background: radial-gradient(circle, rgba(0,194,209,0.30) 0%, rgba(0,194,209,0) 65%);
+  bottom:-80mm; left:-80mm; }
+.cover img.logo { width:62mm; z-index:2; filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45)); }
+.cover h1 {
+  font-size: 30pt; font-weight:700; letter-spacing:1px; margin: 8mm 0 2mm 0; z-index:2;
+  color: var(--yellow);
+}
+.cover .slogan { font-size:15pt; font-weight:700; font-style:italic; color:var(--cyan); margin: 0 0 4mm 0; z-index:2; letter-spacing:0.5px; }
+.cover h2 { font-size:12.5pt; font-weight:400; color:#d9d2ef; margin:0 0 14mm 0; z-index:2; letter-spacing:0.5px;}
+.cover .brands { display:flex; gap:10mm; z-index:2; margin-bottom:16mm; }
+.cover .brand-chip {
+  border: 1.4pt solid rgba(255,255,255,0.35); border-radius: 3mm; padding: 5mm 8mm;
+  font-size: 11pt; font-weight:500; letter-spacing:0.5px;
+}
+.cover .brand-chip.a { color: var(--yellow); border-color: rgba(255,204,0,0.5); }
+.cover .brand-chip.b { color: var(--cyan); border-color: rgba(0,194,209,0.5); }
+.cover .foot { position:absolute; bottom:14mm; z-index:2; font-size:9pt; color:#b8b0d0; letter-spacing:0.5px;}
+.cover .foot strong{ color:white; }
+
+/* ---------- HEADER BAND (inner pages) ---------- */
+.band {
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+  color: white; padding: 10mm 16mm 7mm 16mm;
+}
+.band .eyebrow { font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; opacity:0.85; margin:0 0 1mm 0;}
+.band h1 { font-size:19pt; font-weight:700; margin:0; }
+.content { padding: 9mm 16mm 0 16mm; }
+
+.lead { font-size:10pt; color:var(--gray); margin: 0 0 4mm 0; }
+
+/* photo grid */
+.grid { display:flex; flex-wrap:wrap; gap:4mm; margin-bottom:4mm; }
+.card {
+  width: 55mm; border-radius:3mm; overflow:hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+  border: 1pt solid #eee;
+}
+.card img { width:100%; height:38mm; object-fit:cover; display:block; }
+.card .cap { padding:1.8mm 3mm; font-size:7.5pt; font-weight:500; color:var(--dark); background:white; line-height:1.25; }
+
+.grid.wide .card { width: 84mm; }
+.grid.wide .card img { height: 58mm; }
+
+/* section titles */
+h3.sec {
+  font-size: 12pt; color: var(--purple); font-weight:700; margin: 3mm 0 2.5mm 0;
+  border-left: 3.5pt solid var(--pink); padding-left: 3mm;
+}
+
+.pill-row { display:flex; gap:4mm; margin: 4mm 0 6mm 0; }
+.pill {
+  flex:1; background:#f7f4fc; border-radius:3mm; padding:5mm; text-align:center;
+  border: 1pt solid #ece5f7;
+}
+.pill .n { font-size:15pt; font-weight:700; color:var(--pink); display:block; }
+.pill .l { font-size:8pt; color:var(--gray); }
+
+.hero-num { background:#f7f4fc; border:1pt solid #ece5f7; border-radius:3mm; padding:6mm 8mm;
+  display:flex; align-items:center; gap:8mm; margin:2mm 0 6mm 0; }
+.hero-num .num { font-family:'Poppins'; font-weight:700; font-size:28pt; color:var(--pink); white-space:nowrap; }
+.hero-num .lbl { font-size:8pt; color:var(--gray); letter-spacing:0.5px; }
+.hero-num .divider { width:1pt; align-self:stretch; background:#ece5f7; }
+.hero-num p { margin:0; font-size:9.5pt; color:var(--dark); }
+
+table.cond { width:100%; border-collapse:collapse; margin: 2mm 0 4mm 0; font-size:9pt; }
+table.cond th { background: var(--dark); color:white; text-align:left; padding:2mm 4mm; font-weight:600; font-size:8pt; letter-spacing:0.3px;}
+table.cond td { padding:2.6mm 4mm; border-bottom:1pt solid #eee; vertical-align:top; }
+table.cond tr:nth-child(even) td { background:#faf8fd; }
+table.cond td.num { color:var(--pink); font-weight:700; font-size:11pt; width:12mm; }
+
+.note {
+  background:#fff8e6; border-left:3pt solid var(--yellow); padding:2.5mm 5mm; font-size:8.5pt;
+  color:#6b5a12; border-radius: 0 2mm 2mm 0; margin-bottom:4mm;
+}
+
+.two-col { display:flex; gap:8mm; }
+.two-col .col { flex:1; }
+
+ul.chk { list-style:none; margin:0 0 6mm 0; padding:0; }
+ul.chk li { padding-left: 6mm; position:relative; margin-bottom:2.6mm; font-size:9.8pt; }
+ul.chk li::before { content:'✓'; position:absolute; left:0; color:var(--pink); font-weight:700; }
+ul.chk li strong { display:block; }
+ul.chk li span.d { color:var(--gray); font-size:8.7pt; }
+
+.foot-page {
+  position:absolute; bottom:8mm; left:16mm; right:16mm; display:flex; justify-content:space-between;
+  font-size:7.5pt; color:#a89fc0; border-top: 0.5pt solid #eee; padding-top:2mm;
+}
+
+/* contact page */
+.contact-page { background: linear-gradient(160deg, var(--dark) 0%, #2a1550 100%); color:white; padding: 20mm 18mm; }
+.contact-page h1 { font-size: 22pt; margin:0 0 2mm 0; color: var(--yellow); }
+.contact-page .sub { color:#cfc4ea; font-size:10.5pt; margin-bottom:10mm; }
+.contact-grid { display:flex; gap:8mm; margin-bottom:10mm; }
+.contact-card { flex:1; background: rgba(255,255,255,0.06); border:1pt solid rgba(255,255,255,0.15);
+  border-radius:4mm; padding:7mm; }
+.contact-card h4 { margin:0 0 3mm 0; font-size:11pt; color: var(--yellow); }
+.contact-card p { margin:0 0 2mm 0; font-size:9.5pt; color:#e7e1f5; }
+.contact-list { list-style:none; padding:0; margin:0; }
+.contact-list li { margin-bottom:3.5mm; font-size:10pt; padding-left:8mm; position:relative; color:#f1eefa;}
+.contact-list li .ic { position:absolute; left:0; }
+.cta { text-align:center; margin-top: 6mm; }
+.cta .box { display:inline-block; padding: 6mm 14mm; border-radius: 3mm;
+  background: linear-gradient(90deg, var(--pink), var(--purple)); font-weight:700; font-size:12pt; }
+</style>
+</head>
+<body>
+
+<!-- ================= PORTADA ================= -->
+<div class="page cover">
+  <div class="glow-a"></div>
+  <div class="glow-b"></div>
+  <img class="logo" src="assets/logo-pokecatchwin.png">
+  <h1>DOSIER COMERCIAL</h1>
+  <p class="slogan">Somos Catch &amp; Win</p>
+  <h2>Vending de cartas coleccionables Pokémon<br>100% originales, para cualquier espacio</h2>
+  <div class="brands">
+    <div class="brand-chip a">CATCH &amp; WIN</div>
+  </div>
+  <div class="foot"><strong>Manuel A. Vizcaíno</strong> · Director Comercial · Islas Canarias · 2026</div>
+</div>
+
+<!-- ================= NUESTRA HISTORIA ================= -->
+<div class="page">
+  <div class="band">
+    <p class="eyebrow">Nuestra historia</p>
+    <h1>16 años cuidando cada detalle. Ahora, mejor que nunca.</h1>
+  </div>
+  <div class="content">
+    <p class="lead">
+      Un equipo de profesionales con más de 16 años de experiencia en el sector del ocio y el entretenimiento.
+      Conocemos el negocio desde dentro, porque lo hemos vivido. Hemos creado un producto y un servicio mejorados,
+      más acordes al mercado actual, para ofrecer la mayor calidad y el mejor servicio del sector.
+    </p>
+
+    <div class="pill-row">
+      <div class="pill"><span class="n">16</span><span class="l">Años de<br>experiencia</span></div>
+      <div class="pill"><span class="n">100%</span><span class="l">Producto<br>original y legal</span></div>
+      <div class="pill"><span class="n">0€</span><span class="l">Inversión inicial<br>para el espacio</span></div>
+    </div>
+
+    <h3 class="sec">Nuestras máquinas en distintos espacios</h3>
+    <div class="grid">
+      <div class="card"><img src="assets/pk_cards/pk-yellow-full-a.jpg"><div class="cap">Edición Pokémon · pantalla interactiva y luz LED</div></div>
+      <div class="card"><img src="assets/pk_cards/pk-orange-full-a.jpg"><div class="cap">Modelo Vending Play GO · zona de restauración</div></div>
+      <div class="card"><img src="assets/pk_cards/pk-navy-charizard.jpg"><div class="cap">Gran formato · zona de centro comercial</div></div>
+      <div class="card"><img src="assets/pk_cards/pk-yellow-glow.jpg"><div class="cap">Iluminación personalizable según el espacio</div></div>
+      <div class="card"><img src="assets/pk_cards/pk-orange-context.jpg"><div class="cap">Integración discreta en el entorno del local</div></div>
+      <div class="card"><img src="assets/pk_cards/pk-navy-shelf.jpg"><div class="cap">Amplio surtido siempre visible y renovado</div></div>
+    </div>
+
+    <h3 class="sec">Por qué nosotros</h3>
+    <div class="two-col">
+      <div class="col">
+        <ul class="chk">
+          <li>Cuidamos los detalles que nadie cuida</li>
+          <li>Su satisfacción, y la de sus clientes, está garantizada</li>
+          <li>Nos ocupamos de todo, para que usted no se ocupe de nada</li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul class="chk">
+          <li>Producto 100% original y legal, siempre renovado</li>
+          <li>Instalación, reposición y mantenimiento incluidos</li>
+          <li>Ingreso pasivo, sin inversión ni gestión para el espacio</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot-page"><span>Catch &amp; Win · Dosier Comercial</span><span>2</span></div>
+</div>
+
+<!-- ================= EL SERVICIO ================= -->
+<div class="page">
+  <div class="band">
+    <p class="eyebrow">El servicio</p>
+    <h1>Integral, llave en mano y sin complicaciones</h1>
+  </div>
+  <div class="content">
+    <p class="lead">
+      Un servicio pensado para el cliente del espacio: cartas Pokémon 100% originales, con una experiencia atractiva
+      y moderna. Nosotros nos encargamos de absolutamente todo; el espacio solo disfruta del resultado.
+    </p>
+
+    <div class="grid wide">
+      <div class="card"><img src="assets/pk_cards/pk-cards-detail-b.jpg"><div class="cap">Amplio catálogo de sobres, siempre a la vista</div></div>
+      <div class="card"><img src="assets/pk_cards/pk-orange-detail.jpg"><div class="cap">Pago con tarjeta y contactless, rápido y sencillo</div></div>
+    </div>
+
+    <h3 class="sec">Lo que incluye el servicio</h3>
+    <div class="two-col">
+      <div class="col">
+        <ul class="chk">
+          <li><strong>Producto premium</strong><span class="d">Sobres de cartas Pokémon 100% originales</span></li>
+          <li><strong>Experiencia</strong><span class="d">Pantalla interactiva, atractiva y actual</span></li>
+          <li><strong>Pago fácil</strong><span class="d">Tarjeta y contactless</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul class="chk">
+          <li><strong>Servicio integral</strong><span class="d">Instalación, reposición y mantenimiento incluidos</span></li>
+          <li><strong>Cuidado continuo</strong><span class="d">Revisión periódica y reposición garantizada</span></li>
+          <li><strong>Sin coste</strong><span class="d">Sin inversión ni gestión para el espacio</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot-page"><span>Catch &amp; Win · Dosier Comercial</span><span>3</span></div>
+</div>
+
+<!-- ================= COMO TRABAJAMOS ================= -->
+<div class="page">
+  <div class="band">
+    <p class="eyebrow">Cómo trabajamos</p>
+    <h1>De la visita técnica a la instalación, sin complicaciones</h1>
+  </div>
+  <div class="content">
+    <p class="lead">
+      Nos adaptamos a cualquier espacio: hoteles, centros comerciales, gimnasios o zonas de ocio. Un único punto de
+      servicio por espacio, en zona de paso o recepción, integrado con la estética del lugar y sin obras.
+    </p>
+
+    <table class="cond">
+      <tr><th style="width:12%">Paso</th><th>Qué hacemos</th></tr>
+      <tr><td class="num">01</td><td><strong>Visita y valoración del espacio</strong><br>Estudiamos la zona disponible, el tránsito y el perfil de clientes.</td></tr>
+      <tr><td class="num">02</td><td><strong>Instalación sin obras</strong><br>Montaje rápido e integrado con la estética del local, ≈1,5 m² en zona común.</td></tr>
+      <tr><td class="num">03</td><td><strong>Reposición periódica</strong><br>Producto 100% original y legal, siempre disponible y renovado.</td></tr>
+      <tr><td class="num">04</td><td><strong>Mantenimiento continuo</strong><br>Revisión, limpieza y reparaciones a nuestro cargo durante toda la cesión.</td></tr>
+    </table>
+
+    <div class="note">Un único punto de servicio, integrado con la estética del establecimiento y sin obras. Retirada al finalizar el acuerdo, sin marcas ni daños.</div>
+
+    <h3 class="sec">Nuestras máquinas en su entorno real</h3>
+    <div class="grid">
+      <div class="card"><img src="assets/pk_cards/pk-yellow-corner.jpg"><div class="cap">Instalación en zona de paso, esquina de sala</div></div>
+      <div class="card"><img src="assets/pk_cards/pk-cards-detail-a.jpg"><div class="cap">Sobres siempre visibles y bien ordenados</div></div>
+      <div class="card"><img src="assets/pk_cards/pk-orange-full-a.jpg"><div class="cap">Diseño llamativo, adaptado a cada local</div></div>
+    </div>
+  </div>
+  <div class="foot-page"><span>Catch &amp; Win · Dosier Comercial</span><span>4</span></div>
+</div>
+
+<!-- ================= CONDICIONES ECONOMICAS ================= -->
+<div class="page">
+  <div class="band">
+    <p class="eyebrow">Condiciones económicas</p>
+    <h1>Las mejores condiciones del sector</h1>
+  </div>
+  <div class="content">
+    <div class="hero-num">
+      <div><div class="num">250&nbsp;€</div><div class="lbl">AL MES, POR ESPACIO</div></div>
+      <div class="divider"></div>
+      <p>Importe que Catch &amp; Win abona al espacio por la cesión del lugar donde se instala la máquina. Ingreso pasivo, sin inversión ni gestión por parte del espacio.</p>
+    </div>
+
+    <h3 class="sec">Reparto de responsabilidades</h3>
+    <div class="two-col">
+      <div class="col">
+        <ul class="chk">
+          <li><strong>Suministro e instalación</strong><span class="d">Del servicio completo</span></li>
+          <li><strong>Reposición periódica</strong><span class="d">De producto original</span></li>
+          <li><strong>Mantenimiento</strong><span class="d">Y reparaciones a nuestro cargo</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul class="chk">
+          <li><strong>Seguro de responsabilidad civil</strong><span class="d">Incluido</span></li>
+          <li><strong>Producto 100% original y legal</strong><span class="d">Siempre renovado</span></li>
+          <li><strong>Retirada al finalizar</strong><span class="d">Sin marcas ni daños</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sec">Lo único que facilita el espacio</h3>
+    <table class="cond">
+      <tr><th style="width:30%">Requisito</th><th>Detalle</th></tr>
+      <tr><td><strong>Espacio</strong></td><td>≈1,5 m² en zona común o de paso</td></tr>
+      <tr><td><strong>Corriente</strong></td><td>Toma de electricidad 220 V</td></tr>
+      <tr><td><strong>WiFi</strong></td><td>Conexión a internet</td></tr>
+    </table>
+
+    <div class="note">Ingreso pasivo: 250 €/mes por espacio, sin inversión ni gestión — usted solo cede el lugar. Importes en euros, propuesta orientativa sujeta a acuerdo entre las partes.</div>
+  </div>
+  <div class="foot-page"><span>Catch &amp; Win · Dosier Comercial</span><span>5</span></div>
+</div>
+
+<!-- ================= CONTACTO ================= -->
+<div class="page contact-page">
+  <h1>Hablemos de tu espacio</h1>
+  <p class="sub">Visitamos el local, valoramos el espacio disponible y preparamos una propuesta a medida, sin compromiso.</p>
+
+  <div class="contact-grid" style="justify-content:center;">
+    <div class="contact-card" style="flex:none; width:100mm;">
+      <h4>CATCH &amp; WIN</h4>
+      <p>www.catchandwin.com</p>
+      <p>info@catchandwin.com</p>
+      <p>@oficial.catchandwin</p>
+    </div>
+  </div>
+
+  <ul class="contact-list">
+    <li><span class="ic">☎</span> +34 628 87 42 74 · +34 664 019 650</li>
+    <li><span class="ic">✉</span> info@catchandwin.com</li>
+    <li><span class="ic">🌐</span> www.catchandwin.com</li>
+    <li><span class="ic">📍</span> Islas Canarias · Fuerteventura, Gran Canaria y Cataluña</li>
+    <li><span class="ic">💬</span> Hablamos :) Español e Inglés</li>
+  </ul>
+
+  <div class="cta"><div class="box">Manuel A. Vizcaíno — Director Comercial</div></div>
+</div>
+
+</body>
+</html>
